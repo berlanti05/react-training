@@ -52,3 +52,125 @@ body {
 .profile-card p {
   font-size: 18px;
 }
+.counter-card {
+  width: 400px;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding-bottom: 30px;
+  margin-top: 30px;
+}
+
+.counter-card .card-top {
+  height: 40px;
+  background-color: #ba8261;
+}
+
+.counter-card h2 {
+  margin-top: 20px;
+  font-size: 30px;
+}
+
+.count-number {
+  font-size: 50px;
+  margin: 20px 0;
+  font-weight: bold;
+  color: #333;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.buttons button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  background-color: #ba8261;
+  color: white;
+  transition: 0.2s;
+}
+
+.buttons button:hover {
+  opacity: 0.8;
+}
+.todo-card {
+  width: 400px;
+  background: #fffdf5; /* لون ورقة */
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-top: 30px;
+
+  border-left: 6px solid #ba8261;
+  position: relative;
+}
+
+.todo-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(white, white 29px, #f0e6d6 30px);
+  opacity: 0.3;
+  z-index: 0;
+  border-radius: 10px;
+}
+
+.todo-card * {
+  position: relative;
+  z-index: 1;
+}
+
+.todo-card h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 28px;
+}
+
+.todo-input {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.todo-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+}
+
+.todo-input button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ba8261;
+  color: white;
+  cursor: pointer;
+}
+
+.todo-input button:hover {
+  opacity: 0.85;
+}
+
+.todo-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.todo-card li {
+  padding: 8px 10px;
+  border-bottom: 1px dashed #ddd;
+  font-size: 16px;
+}

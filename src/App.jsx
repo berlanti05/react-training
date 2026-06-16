@@ -1,4 +1,6 @@
 import ProfileCard from "./components/ProfileCard";
+import Counter from "./components/Counter";
+import Todo from "./components/ToDo";
 
 function App() {
   const student = {
@@ -10,8 +12,10 @@ function App() {
 
   return (
     <div className="container">
-      <h1>Student Profiles</h1>
       <ProfileCard student={student} />
+
+      <Counter />
+      <Todo />
     </div>
   );
 }
