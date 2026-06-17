@@ -1,10 +1,10 @@
 import TodoItem from "./TodoItem";
 
-function TodoList({ tasks }) {
+function TodoList({ tasks, toggleComplete }) {
   return (
     <ul>
-      {tasks.map((t, i) => (
-        <TodoItem key={i} task={t} />
+      {tasks.map((task) => (
+        <TodoItem key={task.id} task={task} toggleComplete={toggleComplete} />
       ))}
     </ul>
   );

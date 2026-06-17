@@ -174,3 +174,25 @@ body {
   border-bottom: 1px dashed #ddd;
   font-size: 16px;
 }
+
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.filter-btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ba8261;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+.filter-btn:hover {
+  opacity: 0.85;
+}
