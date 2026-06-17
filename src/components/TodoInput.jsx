@@ -8,7 +8,9 @@ function TodoInput({ task, setTask, addTask }) {
         placeholder="Write a task..."
       />
 
-      <button onClick={addTask}>Add</button>
+      <button className="btn" onClick={addTask}>
+        Add
+      </button>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import TodoInput from "./TodoInput";
 import TodoList from "./TodoList";
+import Button from "./Button";
 
 function Todo({ filter, setFilter }) {
   const [task, setTask] = useState("");
@@ -42,17 +43,23 @@ function Todo({ filter, setFilter }) {
       <TodoInput task={task} setTask={setTask} addTask={addTask} />
 
       <div className="filters">
-        <button className="filter-btn" onClick={() => setFilter("all")}>
-          All
-        </button>
+        <Button
+          text="All"
+          onClick={() => setFilter("all")}
+          active={filter === "all"}
+        />
 
-        <button className="filter-btn" onClick={() => setFilter("active")}>
-          Active
-        </button>
+        <Button
+          text="Active"
+          onClick={() => setFilter("active")}
+          active={filter === "active"}
+        />
 
-        <button className="filter-btn" onClick={() => setFilter("completed")}>
-          Completed
-        </button>
+        <Button
+          text="Completed"
+          onClick={() => setFilter("completed")}
+          active={filter === "completed"}
+        />
       </div>
 
       <TodoList tasks={filteredTasks} toggleComplete={toggleComplete} />

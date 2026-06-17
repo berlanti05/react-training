@@ -9,13 +9,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
-.container h1 {
-  font-size: 40px;
-  margin-bottom: 30px;
-}
+/* ================= PROFILE ================= */
 
 .profile-card {
   width: 400px;
@@ -52,6 +48,9 @@ body {
 .profile-card p {
   font-size: 18px;
 }
+
+/* ================= COUNTER ================= */
+
 .counter-card {
   width: 400px;
   background: white;
@@ -65,7 +64,6 @@ body {
 
 .counter-card .card-top {
   height: 40px;
-  background-color: #ba8261;
 }
 
 .counter-card h2 {
@@ -84,25 +82,14 @@ body {
   display: flex;
   justify-content: center;
   gap: 10px;
+  margin-top: 20px;
 }
 
-.buttons button {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 16px;
-  background-color: #ba8261;
-  color: white;
-  transition: 0.2s;
-}
+/* ================= TODO ================= */
 
-.buttons button:hover {
-  opacity: 0.8;
-}
 .todo-card {
   width: 400px;
-  background: #fffdf5; /* لون ورقة */
+  background: #fffdf5;
   border-radius: 10px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -117,9 +104,12 @@ body {
   position: absolute;
   top: 0;
   right: 0;
+
   width: 100%;
   height: 100%;
+
   background: repeating-linear-gradient(white, white 29px, #f0e6d6 30px);
+
   opacity: 0.3;
   z-index: 0;
   border-radius: 10px;
@@ -136,6 +126,8 @@ body {
   font-size: 28px;
 }
 
+/* ================= INPUT ================= */
+
 .todo-input {
   display: flex;
   gap: 10px;
@@ -145,23 +137,49 @@ body {
 .todo-input input {
   flex: 1;
   padding: 10px;
+
   border: 1px solid #ddd;
   border-radius: 8px;
+
   outline: none;
 }
 
-.todo-input button {
+/* ================= BUTTON (Reusable) ================= */
+
+.btn {
   padding: 10px 15px;
+
   border: none;
   border-radius: 8px;
+
   background-color: #ba8261;
   color: white;
+
   cursor: pointer;
+  font-size: 16px;
+
+  transition: 0.2s;
 }
 
-.todo-input button:hover {
+.btn:hover {
   opacity: 0.85;
 }
+
+.btn.active {
+  transform: scale(1.05);
+}
+
+/* ================= FILTERS ================= */
+
+.filters {
+  display: flex;
+  justify-content: center;
+
+  gap: 10px;
+  margin: 20px 0;
+}
+
+/* ================= TODO LIST ================= */
 
 .todo-card ul {
   list-style: none;
@@ -171,28 +189,8 @@ body {
 
 .todo-card li {
   padding: 8px 10px;
+
   border-bottom: 1px dashed #ddd;
+
   font-size: 16px;
-}
-
-.filters {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin: 20px 0;
-}
-
-.filter-btn {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 8px;
-  background-color: #ba8261;
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-  transition: 0.2s;
-}
-
-.filter-btn:hover {
-  opacity: 0.85;
 }

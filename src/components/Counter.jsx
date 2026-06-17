@@ -12,9 +12,15 @@ function Counter() {
       <p className="count-number">{count}</p>
 
       <div className="buttons">
-        <button onClick={() => setCount(count + 1)}>+</button>
-        <button onClick={() => setCount(count - 1)}>-</button>
-        <button onClick={() => setCount(0)}>Reset</button>
+        <button className="btn" onClick={() => setCount(count + 1)}>
+          +
+        </button>
+        <button className="btn" onClick={() => setCount(count - 1)}>
+          -
+        </button>
+        <button className="btn" onClick={() => setCount(0)}>
+          Reset
+        </button>
       </div>
     </div>
   );
