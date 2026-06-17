@@ -1,3 +1,4 @@
+import { useState } from "react";
 import ProfileCard from "./components/ProfileCard";
 import Counter from "./components/Counter";
 import Todo from "./components/ToDo";
@@ -10,12 +11,14 @@ function App() {
     image: "../src/assets/profileIcon.jpeg",
   };
 
+  const [filter, setFilter] = useState("all");
+
   return (
     <div className="container">
       <ProfileCard student={student} />
-
       <Counter />
-      <Todo />
+
+      <Todo filter={filter} setFilter={setFilter} />
     </div>
   );
 }

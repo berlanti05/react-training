@@ -2,10 +2,9 @@ import { useState } from "react";
 import TodoInput from "./TodoInput";
 import TodoList from "./TodoList";
 
-function Todo() {
+function Todo({ filter, setFilter }) {
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([]);
-  const [filter, setFilter] = useState("all");
 
   const addTask = () => {
     if (task.trim() === "") return;
