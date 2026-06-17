@@ -10,11 +10,11 @@ function ProfileCard({ student }) {
       <h2>{student.name}</h2>
 
       <p>
-        <strong>Major:</strong> {student.major}
+        <i className="fa-solid fa-book-open"></i> {student.major}
       </p>
 
       <p>
-        <strong>University:</strong> {student.university}
+        <i className="fa-solid fa-building-columns"></i> {student.university}
       </p>
     </div>
   );
