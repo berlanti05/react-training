@@ -194,3 +194,131 @@ body {
 
   font-size: 16px;
 }
+
+/* ================= STUDENT FORM ================= */
+
+.student-form {
+  width: 400px;
+
+  background: white;
+
+  border-radius: 20px;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+  padding: 25px;
+
+  margin-top: 30px;
+
+  text-align: center;
+}
+
+.student-form h2 {
+  font-size: 28px;
+  margin-bottom: 25px;
+}
+
+.student-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.student-form input {
+  padding: 12px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 10px;
+
+  font-size: 16px;
+
+  outline: none;
+
+  transition: 0.2s;
+}
+
+.student-form input:focus {
+  border-color: #ba8261;
+
+  box-shadow: 0 0 5px rgba(186, 130, 97, 0.3);
+}
+
+.student-form .btn {
+  margin-top: 10px;
+
+  width: 50%;
+
+  align-self: center;
+}
+
+.error {
+  color: #c0392b;
+
+  font-size: 15px;
+
+  margin-top: 10px;
+}
+
+/* ================= PREVIEW CARD ================= */
+
+.preview-card {
+  width: 400px;
+
+  background: white;
+
+  border-radius: 20px;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+  padding: 25px;
+
+  margin-top: 30px;
+
+  text-align: center;
+}
+
+.preview-card h2 {
+  font-size: 28px;
+
+  margin-bottom: 20px;
+}
+
+.preview-card p {
+  font-size: 18px;
+
+  margin: 12px 0;
+}
+
+/* ================= TOAST ================= */
+.toast {
+  position: fixed;
+
+  bottom: 30px;
+  right: 30px;
+
+  background-color: #ba8261;
+  color: white;
+
+  padding: 15px 25px;
+
+  border-radius: 10px;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
+  font-size: 16px;
+
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
