@@ -1,8 +1,9 @@
+import styles from "./PreviewCard.module.css";
 function PreviewCard({ student }) {
   if (!student) return null;
 
   return (
-    <div className="preview-card">
+    <div className={styles.previewcard}>
       <h2>Student Preview</h2>
 
       <p>
@@ -10,7 +11,7 @@ function PreviewCard({ student }) {
       </p>
 
       <p>
-        <strong>Email:</strong> {student.email}
+        <strong> Email:</strong> {student.email}
       </p>
 
       <p>

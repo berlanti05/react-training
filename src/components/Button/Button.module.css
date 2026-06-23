@@ -1,0 +1,18 @@
+.btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ba8261;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+.btn.active {
+  transform: scale(1.05);
+}

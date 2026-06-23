@@ -1,0 +1,36 @@
+.profileCard {
+  width: 400px;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding-bottom: 30px;
+  margin-top: 30px;
+}
+
+.cardTop {
+  height: 140px;
+  background-color: #ba8261;
+}
+
+.profileImage {
+  margin-top: -70px;
+}
+
+.profileImage img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 2px solid white;
+  object-fit: cover;
+}
+
+.profileCard h2 {
+  margin-top: 20px;
+  font-size: 30px;
+}
+
+.profileCard p {
+  font-size: 15px;
+}
