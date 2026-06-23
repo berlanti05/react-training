@@ -1,4 +1,5 @@
 function ProfileCard({ student }) {
+  if (!student) return null;
   return (
     <div className="profile-card">
       <div className="card-top"></div>

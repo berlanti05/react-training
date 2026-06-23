@@ -22,6 +22,11 @@ function StudentForm({ setStudent, setToast }) {
 
     const gpa = Number(formData.gpa);
 
+    if (!formData.name || !formData.email || !formData.major || !formData.gpa) {
+      setError("All fields are required");
+      return;
+    }
+
     if (gpa < 0 || gpa > 4) {
       setError("GPA must be between 0 and 4");
       return;
