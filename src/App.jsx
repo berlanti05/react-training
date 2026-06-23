@@ -1,9 +1,8 @@
-import RandomUser from "./components/RandomUser";
-
+import StudentDashboard from "./pages/StudentDashboard/StudentDashboard";
 function App() {
   return (
     <div className="container">
-      <RandomUser />
+      <StudentDashboard />
     </div>
   );
 }

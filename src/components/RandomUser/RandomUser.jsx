@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import styles from "./RandomUser.module.css";
 
 function RandomUser() {
   const [user, setUser] = useState(null);
@@ -81,10 +82,10 @@ function RandomUser() {
   }
 
   return (
-    <div className="random-user-card">
-      <div className="random-user-top"></div>
+    <div className={styles.randomUserCard}>
+      <div className={styles.randomUserTop}></div>
 
-      <div className="random-user-image">
+      <div className={styles.randomUserImage}>
         <img src={user.picture.large} alt="User Avatar" />
       </div>
 
@@ -98,7 +99,7 @@ function RandomUser() {
         {user.location.city}, {user.location.country}
       </p>
 
-      <button className="btn" onClick={handleNextUser}>
+      <button className={styles.btn} onClick={handleNextUser}>
         Next User
       </button>
     </div>
