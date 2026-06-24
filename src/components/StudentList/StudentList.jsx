@@ -1,39 +1,54 @@
 import styles from "./StudentList.module.css";
+
 function StudentList({ students, showDetails, deleteStudent }) {
   return (
-    <div className={styles["students-list"]}>
-      <h2>Students List</h2>
+    <div className={styles.tableContainer}>
+      <table className={styles.table}>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Major</th>
+            <th>GPA</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
 
-      {students.length === 0 && <p>No students yet</p>}
+        <tbody>
+          {students.length === 0 ? (
+            <tr>
+              <td colSpan="5">No students yet</td>
+            </tr>
+          ) : (
+            students.map((student) => (
+              <tr key={student.id}>
+                <td>{student.name}</td>
+                <td>{student.email}</td>
+                <td>{student.major}</td>
+                <td>{student.gpa}</td>
 
-      {students.map((student) => (
-        <div key={student.id} className={styles["student-card"]}>
-          <h3>{student.name}</h3>
+                <td className={styles.actions}>
+                  <button
+                    className={styles.btn}
+                    onClick={() => showDetails(student)}
+                  >
+                    View
+                  </button>
 
-          <p>{student.major}</p>
-
-          <div className={styles["student-actions"]}>
-            <button
-              className={styles["btn"]}
-              onClick={() => showDetails(student)}
-            >
-              View Details
-            </button>
-
-            <button
-              className={styles["btn"]}
-              onClick={() => {
-                if (window.confirm("Delete this student?")) {
-                  deleteStudent(student.id);
-                }
-              }}
-            >
-              Delete
-            </button>
-          </div>
-        </div>
-      ))}
+                  <button
+                    className={`${styles.btn} ${styles.deleteBtn}`}
+                    onClick={() => deleteStudent(student.id)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))
+          )}
+        </tbody>
+      </table>
     </div>
   );
 }
+
 export default StudentList;

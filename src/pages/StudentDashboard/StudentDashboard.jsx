@@ -11,9 +11,9 @@ function StudentDashboard() {
   });
 
   const [selectedStudent, setSelectedStudent] = useState(null);
-
+  const [search, setSearch] = useState("");
   const [toast, setToast] = useState("");
-
+  const [gpaFilter, setGpaFilter] = useState("");
   const addStudent = (student) => {
     setStudents([...students, student]);
 
@@ -42,8 +42,16 @@ function StudentDashboard() {
     localStorage.setItem("students", JSON.stringify(students));
   }, [students]);
 
+  const filteredStudents = students
+    .filter((student) =>
+      student.name.toLowerCase().includes(search.toLowerCase()),
+    )
+    .filter((student) => {
+      if (gpaFilter === "") return true;
+      return student.gpa >= Number(gpaFilter);
+    });
   return (
-    <div className={styles["dashboard-container"]}>
+    <div>
       <h1 style={{ fontSize: "60px", color: "#ba8261", textAlign: "center" }}>
         Student Dashboard
       </h1>
@@ -51,9 +59,28 @@ function StudentDashboard() {
       {toast && <div className={ToastStyle["toast"]}>{toast}</div>}
 
       <StudentForm addStudent={addStudent} />
+
+      <div className={styles["search-filters"]}>
+        <input
+          type="text"
+          placeholder="Search student by name..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className={styles["search-input"]}
+        />
+
+        <input
+          type="number"
+          placeholder="Filter by GPA (e.g. 3)"
+          value={gpaFilter}
+          onChange={(e) => setGpaFilter(e.target.value)}
+          className={styles["search-input"]}
+        />
+      </div>
+
       <div className={styles["student-content"]}>
         <StudentList
-          students={students}
+          students={filteredStudents}
           showDetails={showDetails}
           deleteStudent={deleteStudent}
         />

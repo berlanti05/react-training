@@ -1,7 +1,7 @@
 import { useState } from "react";
 import TodoInput from "./TodoInput";
 import TodoList from "./TodoList";
-import Button from "./Button/Button";
+import Button from "../Button/Button";
 import styles from "./Todo.module.css";
 
 function Todo({ filter, setFilter }) {
