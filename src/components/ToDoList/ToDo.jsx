@@ -1,7 +1,8 @@
 import { useState } from "react";
 import TodoInput from "./TodoInput";
 import TodoList from "./TodoList";
-import Button from "./Button";
+import Button from "../Button/Button";
+import styles from "./Todo.module.css";
 
 function Todo({ filter, setFilter }) {
   const [task, setTask] = useState("");
@@ -37,12 +38,12 @@ function Todo({ filter, setFilter }) {
   });
 
   return (
-    <div className="todo-card">
+    <div className={styles.todoCard}>
       <h2>My Notes</h2>
 
       <TodoInput task={task} setTask={setTask} addTask={addTask} />
 
-      <div className="filters">
+      <div className={styles.filters}>
         <Button
           text="All"
           onClick={() => setFilter("all")}
