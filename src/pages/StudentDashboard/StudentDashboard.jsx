@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import StudentForm from "../../components/StudentForm/StudentForm";
 import StudentList from "../../components/StudentList/StudentList";
-import ProfileCard from "../../components/ProfileCard/ProfileCard";
 import styles from "./StudentDashboard.module.css";
 import ToastStyle from "../../components/Toast/Toast.module.css";
 function StudentDashboard() {
@@ -10,7 +9,6 @@ function StudentDashboard() {
     return saved ? JSON.parse(saved) : [];
   });
 
-  const [selectedStudent, setSelectedStudent] = useState(null);
   const [search, setSearch] = useState("");
   const [toast, setToast] = useState("");
   const [gpaFilter, setGpaFilter] = useState("");
@@ -27,15 +25,7 @@ function StudentDashboard() {
   const deleteStudent = (id) => {
     setStudents((prev) => prev.filter((student) => student.id !== id));
 
-    if (selectedStudent?.id === id) {
-      setSelectedStudent(null);
-    }
-
     setToast("Student deleted successfully");
-  };
-
-  const showDetails = (student) => {
-    setSelectedStudent(student);
   };
 
   useEffect(() => {
@@ -52,10 +42,6 @@ function StudentDashboard() {
     });
   return (
     <div>
-      <h1 style={{ fontSize: "60px", color: "#ba8261", textAlign: "center" }}>
-        Student Dashboard
-      </h1>
-
       {toast && <div className={ToastStyle["toast"]}>{toast}</div>}
 
       <StudentForm addStudent={addStudent} />
@@ -81,22 +67,8 @@ function StudentDashboard() {
       <div className={styles["student-content"]}>
         <StudentList
           students={filteredStudents}
-          showDetails={showDetails}
           deleteStudent={deleteStudent}
         />
-
-        {selectedStudent && (
-          <div>
-            <ProfileCard student={selectedStudent} />
-
-            <button
-              className={styles.btn}
-              onClick={() => setSelectedStudent(null)}
-            >
-              Close
-            </button>
-          </div>
-        )}
       </div>
     </div>
   );

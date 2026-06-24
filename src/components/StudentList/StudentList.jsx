@@ -1,6 +1,7 @@
 import styles from "./StudentList.module.css";
+import { Link } from "react-router-dom";
 
-function StudentList({ students, showDetails, deleteStudent }) {
+function StudentList({ students, deleteStudent }) {
   return (
     <div className={styles.tableContainer}>
       <table className={styles.table}>
@@ -28,19 +29,22 @@ function StudentList({ students, showDetails, deleteStudent }) {
                 <td>{student.gpa}</td>
 
                 <td className={styles.actions}>
-                  <button
-                    className={styles.btn}
-                    onClick={() => showDetails(student)}
-                  >
-                    View
-                  </button>
+                  <td className={styles.actions}>
+                    <Link className={styles.btn} to={`/students/${student.id}`}>
+                      View
+                    </Link>
 
-                  <button
-                    className={`${styles.btn} ${styles.deleteBtn}`}
-                    onClick={() => deleteStudent(student.id)}
-                  >
-                    Delete
-                  </button>
+                    <button
+                      className={`${styles.btn} ${styles.deleteBtn}`}
+                      onClick={() => {
+                        if (window.confirm("Delete this student?")) {
+                          deleteStudent(student.id);
+                        }
+                      }}
+                    >
+                      Delete
+                    </button>
+                  </td>
                 </td>
               </tr>
             ))

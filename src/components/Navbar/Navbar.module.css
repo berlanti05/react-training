@@ -1,0 +1,98 @@
+.navbar {
+  width: 100%;
+  height: 70px;
+
+  background-color: #fff;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 70px;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+  box-sizing: border-box;
+}
+
+/* Logo */
+
+.logo {
+  font-size: 26px;
+
+  font-weight: bold;
+
+  color: #ba8261;
+
+  letter-spacing: 1px;
+}
+
+/* Links container */
+
+.links {
+  display: flex;
+
+  align-items: center;
+
+  gap: 35px;
+
+  order: -1;
+}
+
+/* Normal links */
+
+.link {
+  text-decoration: none;
+
+  color: #555;
+
+  font-size: 16px;
+
+  transition: 0.2s;
+
+  padding: 8px 0;
+}
+
+.link:hover {
+  color: #ba8261;
+}
+
+/* Active route */
+
+.active {
+  text-decoration: none;
+
+  background-color: #ba8261;
+
+  color: white;
+
+  padding: 10px 25px;
+
+  border-radius: 25px;
+
+  font-size: 16px;
+
+  transition: 0.2s;
+}
+
+/* Contact button */
+
+.contact {
+  text-decoration: none;
+
+  background-color: #ba8261;
+
+  color: white;
+
+  padding: 10px 25px;
+
+  border-radius: 25px;
+
+  font-size: 16px;
+
+  transition: 0.2s;
+}
+
+.contact:hover {
+  opacity: 0.85;
+}

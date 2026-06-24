@@ -1,9 +1,27 @@
+import { Routes, Route } from "react-router-dom";
+
+import Navbar from "./components/Navbar/Navbar";
+
+import Home from "./pages/Home/Home";
 import StudentDashboard from "./pages/StudentDashboard/StudentDashboard";
+import StudentDetails from "./pages/StudentDetails/StudentDetails";
+import About from "./pages/About/About";
+
 function App() {
   return (
-    <div className="container">
-      <StudentDashboard />
-    </div>
+    <>
+      <Navbar />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+
+        <Route path="/students" element={<StudentDashboard />} />
+
+        <Route path="/students/:id" element={<StudentDetails />} />
+
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </>
   );
 }
 
