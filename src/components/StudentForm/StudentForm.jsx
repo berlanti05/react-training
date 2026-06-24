@@ -1,6 +1,7 @@
 import { useState } from "react";
+import styles from "./StudentForm.module.css";
 
-function StudentForm({ setStudent, setToast }) {
+function StudentForm({ addStudent }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -22,6 +23,11 @@ function StudentForm({ setStudent, setToast }) {
 
     const gpa = Number(formData.gpa);
 
+    if (!formData.name || !formData.email || !formData.major || !formData.gpa) {
+      setError("All fields are required");
+      return;
+    }
+
     if (gpa < 0 || gpa > 4) {
       setError("GPA must be between 0 and 4");
       return;
@@ -29,16 +35,21 @@ function StudentForm({ setStudent, setToast }) {
 
     setError("");
 
-    setStudent(formData);
+    addStudent({
+      ...formData,
+      id: Date.now(),
+    });
 
-    setToast("Student registered successfully");
-
-    setTimeout(() => {
-      setToast("");
-    }, 3000);
+    setFormData({
+      name: "",
+      email: "",
+      major: "",
+      gpa: "",
+    });
   };
+
   return (
-    <div className="student-form">
+    <div className={styles["student-form"]}>
       <h2>Student Registration</h2>
 
       <form onSubmit={handleSubmit}>
@@ -74,11 +85,11 @@ function StudentForm({ setStudent, setToast }) {
           onChange={handleChange}
         />
 
-        <button className="btn" type="submit">
+        <button className={styles.btn} type="submit">
           Register
         </button>
 
-        {error && <p className="error">{error}</p>}
+        {error && <p className={styles.error}>{error}</p>}
       </form>
     </div>
   );
