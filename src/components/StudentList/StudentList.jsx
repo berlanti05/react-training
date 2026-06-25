@@ -1,7 +1,10 @@
 import styles from "./StudentList.module.css";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { StudentContext } from "../../context/StudentContext";
 
-function StudentList({ students, deleteStudent }) {
+function StudentList({ students }) {
+  const { deleteStudent } = useContext(StudentContext);
   return (
     <div className={styles.tableContainer}>
       <table className={styles.table}>
@@ -29,22 +32,20 @@ function StudentList({ students, deleteStudent }) {
                 <td>{student.gpa}</td>
 
                 <td className={styles.actions}>
-                  <td className={styles.actions}>
-                    <Link className={styles.btn} to={`/students/${student.id}`}>
-                      View
-                    </Link>
+                  <Link className={styles.btn} to={`/students/${student.id}`}>
+                    View
+                  </Link>
 
-                    <button
-                      className={`${styles.btn} ${styles.deleteBtn}`}
-                      onClick={() => {
-                        if (window.confirm("Delete this student?")) {
-                          deleteStudent(student.id);
-                        }
-                      }}
-                    >
-                      Delete
-                    </button>
-                  </td>
+                  <button
+                    className={`${styles.btn} ${styles.deleteBtn}`}
+                    onClick={() => {
+                      if (window.confirm("Delete this student?")) {
+                        deleteStudent(student.id);
+                      }
+                    }}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))

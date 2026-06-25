@@ -1,36 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
 import StudentForm from "../../components/StudentForm/StudentForm";
 import StudentList from "../../components/StudentList/StudentList";
 import styles from "./StudentDashboard.module.css";
 import ToastStyle from "../../components/Toast/Toast.module.css";
+import { StudentContext } from "../../context/StudentContext";
 function StudentDashboard() {
-  const [students, setStudents] = useState(() => {
-    const saved = localStorage.getItem("students");
-    return saved ? JSON.parse(saved) : [];
-  });
-
+  const { students } = useContext(StudentContext);
   const [search, setSearch] = useState("");
   const [toast, setToast] = useState("");
   const [gpaFilter, setGpaFilter] = useState("");
-  const addStudent = (student) => {
-    setStudents([...students, student]);
-
-    setToast("Student added successfully ");
-
-    setTimeout(() => {
-      setToast("");
-    }, 3000);
-  };
-
-  const deleteStudent = (id) => {
-    setStudents((prev) => prev.filter((student) => student.id !== id));
-
-    setToast("Student deleted successfully");
-  };
-
-  useEffect(() => {
-    localStorage.setItem("students", JSON.stringify(students));
-  }, [students]);
 
   const filteredStudents = students
     .filter((student) =>
@@ -44,7 +22,7 @@ function StudentDashboard() {
     <div>
       {toast && <div className={ToastStyle["toast"]}>{toast}</div>}
 
-      <StudentForm addStudent={addStudent} />
+      <StudentForm />
 
       <div className={styles["search-filters"]}>
         <input
@@ -65,10 +43,7 @@ function StudentDashboard() {
       </div>
 
       <div className={styles["student-content"]}>
-        <StudentList
-          students={filteredStudents}
-          deleteStudent={deleteStudent}
-        />
+        <StudentList students={filteredStudents} />
       </div>
     </div>
   );

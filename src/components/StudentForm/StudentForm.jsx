@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { useContext } from "react";
+import { StudentContext } from "../../context/StudentContext";
 import styles from "./StudentForm.module.css";
 
-function StudentForm({ addStudent }) {
+function StudentForm() {
+  const { addStudent } = useContext(StudentContext);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
