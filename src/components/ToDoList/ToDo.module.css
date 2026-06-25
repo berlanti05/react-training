@@ -1,0 +1,107 @@
+.todoCard {
+  width: 400px;
+  background: #fffdf5;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-top: 30px;
+
+  border-left: 6px solid #ba8261;
+  position: relative;
+}
+
+.todoCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: repeating-linear-gradient(white, white 29px, #f0e6d6 30px);
+
+  opacity: 0.3;
+  z-index: 0;
+  border-radius: 10px;
+}
+
+.todoCard * {
+  position: relative;
+  z-index: 1;
+}
+
+.todoCard h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 28px;
+}
+
+/* ================= INPUT ================= */
+
+.todoInput {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.todoInput input {
+  flex: 1;
+  padding: 10px;
+
+  border: 1px solid #ddd;
+  border-radius: 8px;
+
+  outline: none;
+}
+
+/* ================= BUTTON (Reusable) ================= */
+
+.btn {
+  padding: 10px 15px;
+
+  border: none;
+  border-radius: 8px;
+
+  background-color: #ba8261;
+  color: white;
+
+  cursor: pointer;
+  font-size: 16px;
+
+  transition: 0.2s;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+.btn.active {
+  transform: scale(1.05);
+}
+
+/* ================= FILTERS ================= */
+
+.filters {
+  display: flex;
+  justify-content: center;
+
+  gap: 10px;
+  margin: 20px 0;
+}
+
+/* ================= TODO LIST ================= */
+
+.todoCard ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.todoCard li {
+  padding: 8px 10px;
+
+  border-bottom: 1px dashed #ddd;
+
+  font-size: 16px;
+}
