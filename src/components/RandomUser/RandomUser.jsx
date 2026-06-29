@@ -1,84 +1,37 @@
-import { useState, useEffect } from "react";
+import useFetch from "../../hooks/useFetch";
 import styles from "./RandomUser.module.css";
 
 function RandomUser() {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const { data, loading, error, refetch } = useFetch(
+    "https://randomuser.me/api/",
+  );
 
-  const fetchUser = async () => {
-    try {
-      const response = await fetch("https://randomuser.me/api/");
+  let user;
 
-      if (!response.ok) {
-        throw new Error("Failed to fetch user");
-      }
-
-      const data = await response.json();
-
-      return data.results[0];
-    } catch {
-      throw new Error("Something went wrong");
-    }
-  };
-
-  useEffect(() => {
-    let ignore = false;
-
-    const loadUser = async () => {
-      setLoading(true);
-      setError("");
-
-      try {
-        const newUser = await fetchUser();
-
-        if (!ignore) {
-          setUser(newUser);
-        }
-      } catch {
-        if (!ignore) {
-          setError("Something went wrong. Please try again.");
-        }
-      } finally {
-        if (!ignore) {
-          setLoading(false);
-        }
-      }
-    };
-
-    loadUser();
-
-    return () => {
-      ignore = true;
-    };
-  }, []);
-
-  const handleNextUser = async () => {
-    setLoading(true);
-    setError("");
-
-    try {
-      const newUser = await fetchUser();
-      setUser(newUser);
-    } catch {
-      setError("Something went wrong. Please try again.");
-    } finally {
-      setLoading(false);
-    }
-  };
+  if (data) {
+    user = data.results[0];
+  } else {
+    user = undefined;
+  }
 
   if (loading) {
-    return <h2>Loading...</h2>;
+    return <div className={styles.loading}>Loading...</div>;
   }
 
   if (error) {
     return (
-      <div>
+      <div className={styles.userError}>
         <h2>{error}</h2>
 
-        <button onClick={handleNextUser}>Try Again</button>
+        <button className={styles.btn} onClick={refetch}>
+          Try Again
+        </button>
       </div>
     );
+  }
+
+  if (!user) {
+    return null;
   }
 
   return (
@@ -93,13 +46,13 @@ function RandomUser() {
         {user.name.first} {user.name.last}
       </h2>
 
-      <p> {user.email}</p>
+      <p>{user.email}</p>
 
       <p>
         {user.location.city}, {user.location.country}
       </p>
 
-      <button className={styles.btn} onClick={handleNextUser}>
+      <button className={styles.btn} onClick={refetch}>
         Next User
       </button>
     </div>

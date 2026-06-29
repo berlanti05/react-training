@@ -1,56 +1,30 @@
-import { useState } from "react";
 import { useContext } from "react";
 import { StudentContext } from "../../context/StudentContext";
 import styles from "./StudentForm.module.css";
+import useForm from "../../hooks/useForm";
 
 function StudentForm() {
   const { addStudent } = useContext(StudentContext);
-  const [formData, setFormData] = useState({
+
+  const { formData, error, handleChange, resetForm, validate } = useForm({
     name: "",
     email: "",
     major: "",
     gpa: "",
   });
 
-  const [error, setError] = useState("");
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const gpa = Number(formData.gpa);
-
-    if (!formData.name || !formData.email || !formData.major || !formData.gpa) {
-      setError("All fields are required");
-      return;
-    }
-
-    if (gpa < 0 || gpa > 4) {
-      setError("GPA must be between 0 and 4");
-      return;
-    }
-
-    setError("");
+    if (!validate()) return;
 
     addStudent({
       ...formData,
       id: Date.now(),
     });
 
-    setFormData({
-      name: "",
-      email: "",
-      major: "",
-      gpa: "",
-    });
+    resetForm();
   };
-
   return (
     <div className={styles["student-form"]}>
       <h2>Student Registration</h2>
