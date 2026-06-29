@@ -1,35 +1,27 @@
-import { useState } from "react";
-import ProfileCard from "./components/ProfileCard";
-import Counter from "./components/Counter";
-import Todo from "./components/ToDo";
-import StudentForm from "./components/StudentForm";
-import PreviewCard from "./components/PreviewCard";
-import Toast from "./components/Toast";
+import { Routes, Route } from "react-router-dom";
+
+import Navbar from "./components/Navbar/Navbar";
+
+import Home from "./pages/Home/Home";
+import StudentDashboard from "./pages/StudentDashboard/StudentDashboard";
+import StudentDetails from "./pages/StudentDetails/StudentDetails";
+import About from "./pages/About/About";
 
 function App() {
-  const student = {
-    name: "Berlanti Masalha",
-    major: "Computer Science",
-    university: "An-Najah National University",
-    image: "../src/assets/profileIcon.jpeg",
-  };
-
-  const [filter, setFilter] = useState("all");
-  const [registeredStudent, setRegisteredStudent] = useState(null);
-  const [toast, setToast] = useState("");
-
   return (
-    <div className="container">
-      <ProfileCard student={student} />
+    <>
+      <Navbar />
 
-      <Counter />
+      <Routes>
+        <Route path="/" element={<Home />} />
 
-      <Todo filter={filter} setFilter={setFilter} />
+        <Route path="/students" element={<StudentDashboard />} />
 
-      <StudentForm setStudent={setRegisteredStudent} setToast={setToast} />
-      <Toast message={toast} />
-      <PreviewCard student={registeredStudent} />
-    </div>
+        <Route path="/students/:id" element={<StudentDetails />} />
+
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </>
   );
 }
 
