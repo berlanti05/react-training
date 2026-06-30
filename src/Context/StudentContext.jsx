@@ -1,31 +1,75 @@
 import { createContext, useState, useEffect } from "react";
+import {
+  getStudents,
+  createStudent,
+  removeStudent,
+  updateStudent,
+} from "../services/studentService";
 
 export const StudentContext = createContext();
 
 export function StudentProvider({ children }) {
-  const [students, setStudents] = useState(() => {
-    const saved = localStorage.getItem("students");
-    return saved ? JSON.parse(saved) : [];
-  });
+  const [students, setStudents] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    localStorage.setItem("students", JSON.stringify(students));
-  }, [students]);
+    const loadStudents = async () => {
+      try {
+        const data = await getStudents();
+        setStudents(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const addStudent = (student) => {
-    setStudents((prev) => [...prev, student]);
+    loadStudents();
+  }, []);
+
+  const addStudent = async (student) => {
+    try {
+      setError("");
+
+      const newStudent = await createStudent(student);
+
+      setStudents((prev) => [...prev, newStudent]);
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
-  const deleteStudent = (id) => {
-    setStudents((prev) => prev.filter((student) => student.id !== id));
+  const deleteStudent = async (id) => {
+    try {
+      await removeStudent(id);
+
+      setStudents((prev) => prev.filter((student) => student.id !== id));
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
+  const editStudent = async (id, student) => {
+    try {
+      const updatedStudent = await updateStudent(id, student);
+
+      setStudents((prev) =>
+        prev.map((item) => (item.id === id ? updatedStudent : item)),
+      );
+    } catch (err) {
+      setError(err.message);
+    }
+  };
   return (
     <StudentContext.Provider
       value={{
         students,
+        loading,
+        error,
         addStudent,
         deleteStudent,
+        updateStudent: editStudent,
       }}
     >
       {children}

@@ -2,13 +2,21 @@ import { useState, useContext } from "react";
 import StudentForm from "../../components/StudentForm/StudentForm";
 import StudentList from "../../components/StudentList/StudentList";
 import styles from "./StudentDashboard.module.css";
-import ToastStyle from "../../components/Toast/Toast.module.css";
 import { StudentContext } from "../../context/StudentContext";
+
 function StudentDashboard() {
-  const { students } = useContext(StudentContext);
+  const { students, loading, error } = useContext(StudentContext);
+
   const [search, setSearch] = useState("");
-  const [toast, setToast] = useState("");
   const [gpaFilter, setGpaFilter] = useState("");
+
+  if (loading) {
+    return <h2 className={styles.loading}>Loading students...</h2>;
+  }
+
+  if (error) {
+    return <h2 className={styles.error}>{error}</h2>;
+  }
 
   const filteredStudents = students
     .filter((student) =>
@@ -16,12 +24,12 @@ function StudentDashboard() {
     )
     .filter((student) => {
       if (gpaFilter === "") return true;
-      return student.gpa >= Number(gpaFilter);
+
+      return Number(student.gpa) >= Number(gpaFilter);
     });
+
   return (
     <div>
-      {toast && <div className={ToastStyle["toast"]}>{toast}</div>}
-
       <StudentForm />
 
       <div className={styles["search-filters"]}>

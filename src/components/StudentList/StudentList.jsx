@@ -36,6 +36,13 @@ function StudentList({ students }) {
                     View
                   </Link>
 
+                  <Link
+                    className={styles.btn}
+                    to={`/students/edit/${student.id}`}
+                  >
+                    Edit
+                  </Link>
+
                   <button
                     className={`${styles.btn} ${styles.deleteBtn}`}
                     onClick={() => {
