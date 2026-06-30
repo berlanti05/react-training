@@ -1,6 +1,7 @@
+import styles from "./ToDo.module.css";
 function TodoInput({ task, setTask, addTask }) {
   return (
-    <div className="todo-input">
+    <div className={styles.todoInput}>
       <input
         type="text"
         value={task}
@@ -8,7 +9,7 @@ function TodoInput({ task, setTask, addTask }) {
         placeholder="Write a task..."
       />
 
-      <button className="btn" onClick={addTask}>
+      <button className={styles.btn} onClick={addTask}>
         Add
       </button>
     </div>
