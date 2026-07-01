@@ -1,6 +1,6 @@
 import styles from "./StudentList.module.css";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { StudentContext } from "../../context/StudentContext";
 
 function StudentList({ students }) {
@@ -63,4 +63,4 @@ function StudentList({ students }) {
   );
 }
 
-export default StudentList;
+export default React.memo(StudentList);

@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useMemo } from "react";
 import StudentForm from "../../components/StudentForm/StudentForm";
 import StudentList from "../../components/StudentList/StudentList";
 import styles from "./StudentDashboard.module.css";
@@ -18,15 +18,17 @@ function StudentDashboard() {
     return <h2 className={styles.error}>{error}</h2>;
   }
 
-  const filteredStudents = students
-    .filter((student) =>
-      student.name.toLowerCase().includes(search.toLowerCase()),
-    )
-    .filter((student) => {
-      if (gpaFilter === "") return true;
+  const filteredStudents = useMemo(() => {
+    return students
+      .filter((student) =>
+        student.name.toLowerCase().includes(search.toLowerCase()),
+      )
+      .filter((student) => {
+        if (gpaFilter === "") return true;
 
-      return Number(student.gpa) >= Number(gpaFilter);
-    });
+        return Number(student.gpa) >= Number(gpaFilter);
+      });
+  }, [students, search, gpaFilter]);
 
   return (
     <div>

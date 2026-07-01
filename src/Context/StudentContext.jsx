@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useCallback } from "react";
 import {
   getStudents,
   createStudent,
@@ -28,7 +28,7 @@ export function StudentProvider({ children }) {
     loadStudents();
   }, []);
 
-  const addStudent = async (student) => {
+  const addStudent = useCallback(async (student) => {
     try {
       setError("");
 
@@ -38,9 +38,9 @@ export function StudentProvider({ children }) {
     } catch (err) {
       setError(err.message);
     }
-  };
+  }, []);
 
-  const deleteStudent = async (id) => {
+  const deleteStudent = useCallback(async (id) => {
     try {
       await removeStudent(id);
 
@@ -48,9 +48,9 @@ export function StudentProvider({ children }) {
     } catch (err) {
       setError(err.message);
     }
-  };
+  }, []);
 
-  const editStudent = async (id, student) => {
+  const editStudent = useCallback(async (id, student) => {
     try {
       const updatedStudent = await updateStudent(id, student);
 
@@ -60,7 +60,7 @@ export function StudentProvider({ children }) {
     } catch (err) {
       setError(err.message);
     }
-  };
+  }, []);
   return (
     <StudentContext.Provider
       value={{
