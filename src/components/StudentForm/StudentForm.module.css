@@ -1,0 +1,69 @@
+.student-form {
+  width: 1100px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.student-form h2 {
+  font-size: 28px;
+  margin-bottom: 25px;
+}
+
+.student-form form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.student-form input {
+  padding: 12px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 10px;
+
+  font-size: 16px;
+
+  outline: none;
+
+  transition: 0.2s;
+}
+
+.student-form input:focus {
+  border-color: #ba8261;
+  box-shadow: 0 0 5px rgba(186, 130, 97, 0.3);
+}
+
+.btn {
+  padding: 10px 15px;
+
+  border: none;
+  border-radius: 8px;
+
+  background-color: #ba8261;
+  color: white;
+
+  cursor: pointer;
+  font-size: 16px;
+
+  transition: 0.2s;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+.btn.active {
+  transform: scale(1.05);
+}
+
+.error {
+  color: #c0392b;
+  font-size: 15px;
+  margin-top: 10px;
+}
