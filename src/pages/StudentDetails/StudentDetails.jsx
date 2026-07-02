@@ -1,12 +1,17 @@
 import { useParams } from "react-router-dom";
+import { useContext } from "react";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
+import { StudentContext } from "../../context/StudentContext";
 
 function StudentDetails() {
   const { id } = useParams();
 
-  const students = JSON.parse(localStorage.getItem("students")) || [];
+  // Fixed after review: StudentDetails was still reading from localStorage.
+  // It now consumes students from StudentContext to stay synchronized
+  // with the shared application state.
+  const { students } = useContext(StudentContext);
 
-  const student = students.find((student) => student.id === Number(id));
+  const student = students.find((student) => String(student.id) === id);
 
   if (!student) {
     return (

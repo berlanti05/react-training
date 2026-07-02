@@ -20,13 +20,7 @@
       "email": "saraothman@gmail.com",
       "major": "CS",
       "gpa": 3.2
-    },
-    {
-      "name": "shiamaa salahat",
-      "email": "shiamaasalahat@gmail.com",
-      "major": "CS",
-      "gpa": "2.7",
-      "id": "Twnzcfm8Pko"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

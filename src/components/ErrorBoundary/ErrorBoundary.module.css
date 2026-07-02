@@ -1,0 +1,17 @@
+.errorBox {
+  margin: 50px auto;
+  padding: 30px;
+  width: 400px;
+  text-align: center;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.errorBox h2 {
+  color: #ba8261;
+}
+
+.errorBox p {
+  color: #555;
+}

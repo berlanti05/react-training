@@ -26,10 +26,10 @@ function StudentList({ students }) {
           ) : (
             students.map((student) => (
               <tr key={student.id}>
-                <td>{student.name}</td>
-                <td>{student.email}</td>
-                <td>{student.major}</td>
-                <td>{student.gpa}</td>
+                <td>{student?.name}</td>
+                <td>{student?.email}</td>
+                <td>{student?.major}</td>
+                <td>{student?.gpa}</td>
 
                 <td className={styles.actions}>
                   <Link className={styles.btn} to={`/students/${student.id}`}>
